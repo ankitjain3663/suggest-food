@@ -1,0 +1,58 @@
+<div>
+  <header></header>
+  <main>
+    <div> 
+      <span>
+        What should I cook today?
+      </span>
+    </div>
+    <button (click)="showDropDown = true">
+      Click to find out
+    </button>
+    <div>
+      <select *ngIf="showDropDown" [(ngModel)]="timeValue">
+        <option value="breakfast">
+          Morning Breakfast
+        </option>
+        <option value="lunch">
+          Lunch
+        </option>
+        <option value="snack">
+          Afternoon Snacks
+        </option>
+        <option value="dinner">
+          Dinner
+        </option>
+        <option value="sleep">
+          Before Sleep
+        </option>
+      </select>
+    </div>
+    <div *ngIf="timeValue === 'breakfast' && breakfast_items.length > 0">
+      <div *ngFor="let item of breakfast_items">
+        <p> {{ item.category }} </p>
+        <div *ngFor="let val of item.value">
+          <span> {{ val }} </span>
+        </div>
+        <span *ngIf="item.isRequired"> You need to eat </span>
+        <span *ngIf="!item.isRequired"> You can chose to eat </span>
+        <span *ngIf="!item.giveChoice"> all of these items </span>
+        <span *ngIf="item.giveChoice"> one or many items </span>
+      </div>
+    </div>
+    <div *ngIf="timeValue === 'lunch'">
+
+    </div>
+    <div *ngIf="timeValue === 'snack'">
+
+    </div>
+    <div *ngIf="timeValue === 'dinner'">
+
+    </div>
+    <div *ngIf="timeValue === 'sleep'">
+
+    </div>
+  </main>
+  <footer>
+  </footer>
+</div>
